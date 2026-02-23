@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Love Story 💕</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --rose: #c8506a;
+        --blush: #f5c6d0;
+        --cream: #fdf6f0;
+        --gold: #c9a96e;
+        --deep: #2a1a1f;
+        --soft: #7a4f5a;
+        --petal: #ffe4ec;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--cream);
+        color: var(--deep);
+        font-family: "Cormorant Garamond", serif;
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* Custom cursor */
+      .cursor {
+        width: 20px;
+        height: 20px;
+        background: var(--rose);
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition:
+          transform 0.1s ease,
+          width 0.2s,
+          height 0.2s,
+          background 0.2s;
+        mix-blend-mode: multiply;
+      }
+      .cursor.grow {
+        width: 50px;
+        height: 50px;
+        background: var(--blush);
+      }
+
+      /* Floating petals */
+      .petal {
+        position: fixed;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0;
+        animation: fall linear infinite;
+        font-size: 1.2rem;
+      }
+      @keyframes fall {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px) rotate(0deg);
+        }
+        10% {
+          opacity: 0.7;
+        }
+        90% {
+          opacity: 0.4;
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      /* ── NAVIGATION ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        padding: 1.2rem 2rem;
+        background: rgba(253, 246, 240, 0.85);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(200, 80, 106, 0.15);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+      }
+      nav a {
+        color: var(--soft);
+        text-decoration: none;
+        transition: color 0.3s;
+        position: relative;
+      }
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--rose);
+        transform: scaleX(0);
+        transition: transform 0.3s;
+      }
+      nav a:hover {
+        color: var(--rose);
+      }
+      nav a:hover::after {
+        transform: scaleX(1);
+      }
+      .nav-heart {
+        color: var(--rose);
+        font-size: 1rem;
+        animation: pulse 1.5s ease infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      /* ── HERO ── */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 6rem 2rem 4rem;
+        background:
+          radial-gradient(ellipse at 30% 20%, #ffe4ec 0%, transparent 50%),
+          radial-gradient(ellipse at 70% 80%, #ffd6e7 0%, transparent 50%),
+          var(--cream);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-decoration {
+        position: absolute;
+        font-size: 8rem;
+        opacity: 0.06;
+        animation: float 6s ease-in-out infinite;
+      }
+      .hero-decoration:nth-child(1) {
+        top: 10%;
+        left: 5%;
+        animation-delay: 0s;
+      }
+      .hero-decoration:nth-child(2) {
+        top: 15%;
+        right: 8%;
+        animation-delay: 2s;
+        font-size: 5rem;
+      }
+      .hero-decoration:nth-child(3) {
+        bottom: 20%;
+        left: 10%;
+        animation-delay: 4s;
+        font-size: 4rem;
+      }
+      .hero-decoration:nth-child(4) {
+        bottom: 25%;
+        right: 5%;
+        animation-delay: 1s;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-5deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(5deg);
+        }
+      }
+
+      .hero-eyebrow {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.4rem;
+        color: var(--rose);
+        margin-bottom: 1rem;
+        animation: fadeUp 1s ease 0.2s both;
+      }
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 700;
+        line-height: 1.1;
+        color: var(--deep);
+        animation: fadeUp 1s ease 0.4s both;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: var(--rose);
+      }
+      .hero-subtitle {
+        font-size: 1.3rem;
+        color: var(--soft);
+        font-style: italic;
+        margin-top: 1.5rem;
+        max-width: 500px;
+        animation: fadeUp 1s ease 0.6s both;
+      }
+      .hero-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2.5rem 0;
+        animation: fadeUp 1s ease 0.8s both;
+      }
+      .hero-divider::before,
+      .hero-divider::after {
+        content: "";
+        flex: 1;
+        max-width: 80px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--rose));
+      }
+      .hero-divider::after {
+        background: linear-gradient(to left, transparent, var(--rose));
+      }
+      .hero-divider span {
+        font-size: 1.5rem;
+      }
+      .scroll-cue {
+        position: absolute;
+        bottom: 2rem;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        color: var(--soft);
+        text-transform: uppercase;
+        animation:
+          bounce 2s ease infinite,
+          fadeUp 1s ease 1.2s both;
+        cursor: pointer;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(6px);
+        }
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── SECTION COMMON ── */
+      section {
+        padding: 6rem 2rem;
+        position: relative;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .section-label {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.2rem;
+        color: var(--rose);
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: var(--deep);
+      }
+      .section-title em {
+        font-style: italic;
+        color: var(--rose);
+      }
+      .section-rule {
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(to right, var(--rose), var(--blush));
+        margin: 1.2rem auto 0;
+        border-radius: 2px;
+      }
+
+      /* ── LOVE STORY TIMELINE ── */
+      #story {
+        background: var(--petal);
+      }
+      .timeline {
+        max-width: 750px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          var(--blush),
+          var(--rose),
+          var(--blush)
+        );
+        transform: translateX(-50%);
+      }
+      .tl-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 3rem;
+        position: relative;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+      }
+      .tl-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .tl-item:nth-child(odd) {
+        flex-direction: row-reverse;
+      }
+      .tl-dot {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 14px;
+        height: 14px;
+        background: var(--rose);
+        border-radius: 50%;
+        border: 3px solid var(--cream);
+        box-shadow: 0 0 0 3px var(--rose);
+        z-index: 1;
+        top: 6px;
+      }
+      .tl-content {
+        width: 44%;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(200, 80, 106, 0.1);
+        position: relative;
+      }
+      .tl-item:nth-child(odd) .tl-content {
+        margin-right: 6%;
+      }
+      .tl-item:nth-child(even) .tl-content {
+        margin-left: 6%;
+      }
+      .tl-date {
+        font-family: "Dancing Script", cursive;
+        font-size: 1rem;
+        color: var(--rose);
+        margin-bottom: 0.4rem;
+      }
+      .tl-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--deep);
+        margin-bottom: 0.5rem;
+      }
+      .tl-text {
+        font-size: 0.95rem;
+        color: var(--soft);
+        line-height: 1.7;
+      }
+      .tl-emoji {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      /* ── PHOTO GALLERY ── */
+      #gallery {
+        background: var(--cream);
+      }
+      .gallery-grid {
+        max-width: 900px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      .gallery-item {
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, var(--blush), var(--petal));
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .gallery-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 40px rgba(200, 80, 106, 0.25);
+      }
+      .gallery-item.large {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Overlay that appears on hover */
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(200, 80, 106, 0.95),
+          rgba(74, 26, 46, 0.95)
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .gallery-overlay .gallery-icon {
+        font-size: 2.5rem;
+        display: block;
+        margin-bottom: 0.8rem;
+        animation: floatIcon 2s ease-in-out infinite;
+      }
+      @keyframes floatIcon {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .gallery-overlay .gallery-title {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.3rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .gallery-overlay .gallery-subtitle {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.85);
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+
+      .gallery-overlay .gallery-caption {
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        color: var(--gold);
+        padding: 0.6rem 1.2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      /* For items without images (placeholders) */
+      .gallery-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+      }
+      .gallery-placeholder .gallery-icon {
+        font-size: 2.5rem;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      .gallery-placeholder .gallery-title {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.1rem;
+        color: var(--rose);
+        margin-bottom: 0.3rem;
+      }
+      .gallery-placeholder .gallery-subtitle {
+        font-size: 0.75rem;
+        color: var(--soft);
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      /* Upload hint */
+      .gallery-hint {
+        text-align: center;
+        margin-top: 2rem;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.95rem;
+        color: var(--soft);
+        font-style: italic;
+      }
+
+      /* ── QUESTIONS ── */
+      #questions {
+        background: linear-gradient(135deg, #2a1a1f 0%, #4a1a2e 100%);
+      }
+      #questions .section-title {
+        color: white;
+      }
+      #questions .section-label {
+        color: var(--blush);
+      }
+      .q-cards {
+        max-width: 800px;
+        margin: 0 auto;
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      }
+      .q-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(200, 80, 106, 0.3);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition:
+          transform 0.3s,
+          border-color 0.3s;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .q-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .q-card:hover {
+        border-color: var(--rose);
+        transform: translateY(-3px);
+      }
+      .q-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .q-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        color: white;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+      }
+      .q-options {
+        display: flex;
+        gap: 0.8rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .q-btn {
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+        border: 1px solid var(--rose);
+        background: transparent;
+        color: var(--blush);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .q-btn:hover,
+      .q-btn.selected {
+        background: var(--rose);
+        color: white;
+        box-shadow: 0 0 20px rgba(200, 80, 106, 0.4);
+      }
+      .q-response {
+        margin-top: 1rem;
+        font-family: "Dancing Script", cursive;
+        font-size: 1.2rem;
+        color: var(--gold);
+        min-height: 2rem;
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .q-response.show {
+        opacity: 1;
+      }
+
+      /* ── LOVE LETTER ── */
+      #letter {
+        background: var(--petal);
+        text-align: center;
+      }
+      .letter-wrapper {
+        max-width: 680px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        padding: 4rem 3.5rem;
+        box-shadow: 0 20px 60px rgba(200, 80, 106, 0.15);
+        position: relative;
+        border-top: 4px solid var(--rose);
+      }
+      .letter-wrapper::before {
+        content: "❝";
+        position: absolute;
+        top: -1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        padding: 0 0.5rem;
+        font-size: 3rem;
+        color: var(--rose);
+        font-family: "Playfair Display", serif;
+      }
+      .letter-text {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        line-height: 2;
+        color: var(--deep);
+        font-style: italic;
+        white-space: pre-line;
+      }
+      .letter-sig {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.8rem;
+        color: var(--rose);
+        margin-top: 2rem;
+      }
+      .heart-rain {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        overflow: hidden;
+        border-radius: 16px;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--deep);
+        color: rgba(255, 255, 255, 0.6);
+        text-align: center;
+        padding: 3rem 2rem;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.95rem;
+      }
+      footer .footer-heart {
+        font-size: 2rem;
+        display: block;
+        margin-bottom: 0.5rem;
+        animation: pulse 1.5s ease infinite;
+      }
+      footer .footer-msg {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.5rem;
+        color: var(--blush);
+        margin: 0.5rem 0;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 600px) {
+        .timeline::before {
+          left: 20px;
+        }
+        .tl-item,
+        .tl-item:nth-child(odd) {
+          flex-direction: column;
+        }
+        .tl-dot {
+          left: 20px;
+        }
+        .tl-content {
+          width: 88%;
+          margin-left: 12% !important;
+          margin-right: 0 !important;
+        }
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .gallery-item.large {
+          grid-column: span 2;
+        }
+        .q-cards {
+          grid-template-columns: 1fr;
+        }
+        .letter-wrapper {
+          padding: 2.5rem 1.5rem;
+        }
+        nav {
+          gap: 1rem;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom cursor -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Floating petals -->
+    <div id="petals"></div>
+
+    <!-- Navigation -->
+    <nav>
+      <a href="#story">Our Story</a>
+      <span class="nav-heart">♥</span>
+      <a href="#gallery">Gallery</a>
+      <span class="nav-heart">♥</span>
+      <a href="#questions">For You</a>
+      <span class="nav-heart">♥</span>
+      <a href="#letter">Love Letter</a>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-decoration">🌹</div>
+      <div class="hero-decoration">💕</div>
+      <div class="hero-decoration">✨</div>
+      <div class="hero-decoration">🌸</div>
+
+      <p class="hero-eyebrow">From neighbors to soulmates</p>
+      <h1 class="hero-title">You Were Always<br /><em>Meant to Be Mine</em></h1>
+      <p class="hero-subtitle">
+        From childhood lanes to college rides, from confused hearts to endless
+        love — this is our story.
+      </p>
+      <div class="hero-divider"><span>🌹</span></div>
+
+      <div
+        class="scroll-cue"
+        onclick="
+          document
+            .getElementById('story')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+      >
+        ↓ &nbsp; scroll to begin &nbsp; ↓
+      </div>
+    </section>
+
+    <!-- OUR LOVE STORY -->
+    <section id="story">
+      <div class="section-header">
+        <span class="section-label">Chapter One</span>
+        <h2 class="section-title">Our <em>Love Story</em></h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">🏠</span>
+            <p class="tl-date">Childhood Days</p>
+            <h3 class="tl-title">Neighbors, Nothing More</h3>
+            <p class="tl-text">
+              You lived right next door, just one year younger than me. We
+              talked when we saw each other, played shuttle on our street during
+              10th class. But I was blind — I had no idea that the girl next
+              door would one day become my entire world.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">🚴</span>
+            <p class="tl-date">Inter Days - Same College</p>
+            <h3 class="tl-title">Cycling Together, Hearts Apart</h3>
+            <p class="tl-text">
+              When you joined Inter 1st year at my college, you'd wait and cycle
+              with me every morning. I was too foolish to see what was right in
+              front of me. Then one day, you proposed — indirectly, but I knew.
+              And I... I said no. I hurt you. I'm so sorry for making you wait.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">📱</span>
+            <p class="tl-date">The Distance Years</p>
+            <h3 class="tl-title">Silent Hearts Reconnecting</h3>
+            <p class="tl-text">
+              After I rejected you, we grew distant. I went to B.Tech, you
+              finished Inter. No calls, no messages. Then one day I saw your
+              Snapchat story about your internship. I typed a message but didn't
+              send it... but you saw I was typing. You called. That's when
+              everything changed.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">🏍️</span>
+            <p class="tl-date">April 2024</p>
+            <h3 class="tl-title">The Bike Ride That Changed Everything</h3>
+            <p class="tl-text">
+              You came to meet me in Hyderabad. I picked you up on my Duke. When
+              you put your hand on my waist, I held it with my left hand without
+              thinking. We rode for 5 hours that night. That's when I realized —
+              this isn't just friendship. I love you. The next morning at 8 AM,
+              I came to your place and proposed properly.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">🌄</span>
+            <p class="tl-date">June 2024</p>
+            <h3 class="tl-title">Pune - Our First Trip</h3>
+            <p class="tl-text">
+              We went to Pune with friends. The bike rides, the mountains, the
+              laughter — everything was perfect. Every moment with you felt like
+              a dream. That trip showed me what happiness really looks like: it
+              looks like you, beside me.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">🎂</span>
+            <p class="tl-date">March 8, 2025</p>
+            <h3 class="tl-title">Your Birthday - On One Knee</h3>
+            <p class="tl-text">
+              I booked a room, brought cake and gifts. After cutting the cake, I
+              got down on one knee and proposed to you with a rose — the proper
+              way you always deserved. You smiled, I smiled, and that moment
+              became my favorite memory of all time.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">💌</span>
+            <p class="tl-date">March 24, 2025</p>
+            <h3 class="tl-title">My Birthday - Your Love Letter</h3>
+            <p class="tl-text">
+              You booked a room for my birthday. You gave me gifts and a
+              beautiful love letter. We took so many pictures together. I've
+              never been happier. Seeing the effort you put in, the love in your
+              eyes — I fell for you all over again.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">💔</span>
+            <p class="tl-date">April 2025</p>
+            <h3 class="tl-title">The Storm We Survived</h3>
+            <p class="tl-text">
+              My families found out. They said no. Everything fell apart. We
+              fought, we cried, there was distance and silence. But you... you
+              never left. You stayed loyal when I gave you every reason to walk
+              away. You taught me what real love means: staying even when it's
+              hard.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">💼</span>
+            <p class="tl-date">September 2025</p>
+            <h3 class="tl-title">New Beginnings</h3>
+            <p class="tl-text">
+              I finally got a job in Bangalore. A new chapter began. You
+              supported me through everything — the jobless days, the family
+              issues, the uncertainty. You never complained. You just... loved
+              me. Unconditionally.
+            </p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-emoji">💞</span>
+            <p class="tl-date">February 2026 - Now</p>
+            <h3 class="tl-title">Long Distance, Endless Love</h3>
+            <p class="tl-text">
+              We're miles apart but closer than ever. Yes, I irritate you
+              sometimes — I talk to colleagues, I tease you, we have silly
+              fights. But they last only an hour because you understand me like
+              no one else. You're patient, loyal, and so incredibly loving.
+              Distance makes it hard, but our calls, our chats, our romantic
+              talks — they make everything worth it. You are my home, no matter
+              where I am.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="section-header">
+        <span class="section-label">Our Memories</span>
+        <h2 class="section-title">A Gallery of <em>Us</em></h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item large">
+          <img
+            src="https://drive.google.com/thumbnail?id=1TcMEbGTdpWMAgVVY6cPTu9fob-oKQiTR&sz=w2000"
+            alt="Duke bike ride"
+          />
+          <!-- This overlay will show when you add an image and hover -->
+          <div class="gallery-overlay">
+            <span class="gallery-icon">🌹</span>
+            <p class="gallery-title">The rose</p>
+            <p class="gallery-caption">On one knee 💍</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://drive.google.com/thumbnail?id=1bB0bvPx4eYE9m_6Mb2Y_wT1GzK0e2IBo&sz=w2000"
+            alt="Duke bike ride"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-icon">🎂</span>
+            <p class="gallery-title">March 8, 2025</p>
+            <p class="gallery-caption">Her birthday🌹</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://drive.google.com/thumbnail?id=1AB0_9MS3t_JcUufrkeh4-2Wms8ozSeZd&sz=w2000"
+            alt="Duke bike ride"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-icon">💌</span>
+            <p class="gallery-title">March 24, 2025</p>
+            <p class="gallery-caption">My birthday 💕</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://drive.google.com/thumbnail?id=1o6mNFMjLlDZ4P1smLJ0k4J_bhEZPmweN&sz=w2000"
+            alt="Duke bike ride"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-icon">⛰️</span>
+            <p class="gallery-title">Pune mountains</p>
+            <p class="gallery-caption">Our adventure 🌄</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://drive.google.com/thumbnail?id=1rl2vWrI10WyM7sfY85bZ0i6JyiXDiVa5&sz=w2000"
+            alt="Duke bike ride"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-icon">💞</span>
+            <p class="gallery-title">Just us two</p>
+            <p class="gallery-caption">Forever moments ✨</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <!-- Replace with: <img src="https://drive.google.com/uc?export=view&id=YOUR_FILE_ID" alt="Rose proposal"> -->
+          <img
+            src="https://drive.google.com/thumbnail?id=1-1cG4f-8G1prk5RNnrSu0sb9hfECl2OX&sz=w2000"
+            alt="Duke bike ride"
+          />
+          <div class="gallery-overlay">
+            <span class="gallery-icon">🏍️</span>
+            <p class="gallery-title">That Duke bike ride</p>
+            <p class="gallery-subtitle">The night everything changed</p>
+            <p class="gallery-caption">5 hours that changed our lives 💕</p>
+          </div>
+          
+        </div>
+      </div>
+
+      <p class="gallery-hint">
+        ✦ Add your real photos here — the Duke ride, birthdays, Pune trip, and
+        all our beautiful moments ✦
+      </p>
+    </section>
+
+    <!-- ROMANTIC QUESTIONS -->
+    <section id="questions">
+      <div class="section-header">
+        <span class="section-label">Just for You</span>
+        <h2 class="section-title" style="color: white">
+          Questions from <em style="color: var(--blush)">My Heart</em>
+        </h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="q-cards">
+        <div class="q-card">
+          <div class="q-icon">🏍️</div>
+          <p class="q-text">
+            "Do you remember that first bike ride? When you held my waist and I
+            held your hand?"
+          </p>
+          <div class="q-options">
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r1',
+                  '💕 That night changed everything for us. I\'m so glad we found our way.',
+                )
+              "
+            >
+              I remember everything 💕
+            </button>
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r1',
+                  '🥹 The best 5 hours of my life. That\'s when our real story began.',
+                )
+              "
+            >
+              Best night ever 🥹
+            </button>
+          </div>
+          <p class="q-response" id="r1"></p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-icon">💔</div>
+          <p class="q-text">
+            "I'm sorry I rejected you that first time. Can you forgive my
+            foolish younger self?"
+          </p>
+          <div class="q-options">
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r2',
+                  '😭 You have no idea how much that means to me. I love you.',
+                )
+              "
+            >
+              I forgave you long ago 💗
+            </button>
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r2',
+                  '🌟 Everything happens for a reason. We found each other when we were ready.',
+                )
+              "
+            >
+              It made us stronger ✨
+            </button>
+          </div>
+          <p class="q-response" id="r2"></p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-icon">😤</div>
+          <p class="q-text">
+            "I know I irritate you sometimes — talking to colleagues, teasing
+            you. But you never leave. Why do you stay?"
+          </p>
+          <div class="q-options">
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r3',
+                  '😭💕 You stay because you love me. Even when I\'m difficult. That\'s real love.',
+                )
+              "
+            >
+              Because I love you 💞
+            </button>
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r3',
+                  '🥺 You understand me better than I understand myself. Thank you for that.',
+                )
+              "
+            >
+              You're worth it all 🌹
+            </button>
+          </div>
+          <p class="q-response" id="r3"></p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-icon">🌏</div>
+          <p class="q-text">
+            "This long-distance is hard. But would you wait for me until we can
+            finally be together?"
+          </p>
+          <div class="q-options">
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r4',
+                  '😭 I\'ll wait as long as it takes. You\'re my forever.',
+                )
+              "
+            >
+              I'll wait forever 💫
+            </button>
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r4',
+                  '💕 Distance means nothing when you mean everything. I\'m never leaving.',
+                )
+              "
+            >
+              Distance means nothing 🌟
+            </button>
+          </div>
+          <p class="q-response" id="r4"></p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-icon">💍</div>
+          <p class="q-text">
+            "One day, when everything is right, will you marry me?"
+          </p>
+          <div class="q-options">
+            <button
+              class="q-btn"
+              onclick="
+                answer(
+                  this,
+                  '💕 Yes? YES?! I\'m the happiest person alive right now! 😭💕',
+                )
+              "
+            >
+              Yes! 💕
+            </button>
+            <button
+              class="q-btn"
+              onclick="
+                answer(
+                  this,
+                  '🥹 A thousand times YES. I can\'t wait to spend forever with you.',
+                )
+              "
+            >
+              Always yes 🥹
+            </button>
+          </div>
+          <p class="q-response" id="r5"></p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-icon">🎂</div>
+          <p class="q-text">
+            "From March 8th to March 24th — our birthdays were the best days.
+            Can we make every day feel like that?"
+          </p>
+          <div class="q-options">
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r6',
+                  '💗 Every day with you feels like celebration. I promise more moments like those.',
+                )
+              "
+            >
+              Every day with you ✨
+            </button>
+            <button
+              class="q-btn"
+              onclick="
+                answer2(
+                  this,
+                  'r6',
+                  '🥰 Those were perfect. And we\'re making more memories every single day.',
+                )
+              "
+            >
+              We will! 🌹
+            </button>
+          </div>
+          <p class="q-response" id="r6"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOVE LETTER -->
+    <section id="letter">
+      <div class="section-header">
+        <span class="section-label">Straight from my heart</span>
+        <h2 class="section-title">A <em>Love Letter</em> for You</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="letter-wrapper" id="letterBox">
+        <div class="heart-rain" id="heartRain"></div>
+        <p class="letter-text">
+          My dearest love, I'm writing this because words fall short when I try
+          to tell you face-to-face. So here, in this space just for us, let me
+          try. You were the girl next door. The one I was too blind to see. We
+          played shuttle on our street, cycled to college together, and I still
+          didn't understand what the universe was trying to tell me. When you
+          proposed to me that day during Inter, I said no. I hurt you. I made
+          you wait. I'm so sorry for that. I was foolish, confused, too young to
+          recognize love even when it was staring me in the face. But you... you
+          never gave up on me. Even after the rejection, after the silence,
+          after years of no contact — somehow, we found our way back. That
+          Snapchat message I almost sent, your call that followed, our
+          late-night conversations while you were in Hyderabad and I was
+          finishing B.Tech — that was fate giving us a second chance. April
+          2024. The night that changed everything. When you came to meet me and
+          sat on my Duke, when you put your hand on my waist and I held it with
+          my left hand without even thinking — that moment, I finally
+          understood. This wasn't friendship. This was love. It always had been.
+          The next morning, I came to you at 8 AM and properly asked you to be
+          mine. You said yes. My heart has never been the same since. Then came
+          Pune. Those mountain roads, that bike ride, your laughter echoing in
+          the wind — that trip showed me what happiness really looks like. It
+          looks like you, next to me, enjoying every moment we create together.
+          Our birthdays in March 2025 were magical. On March 8th, I got down on
+          one knee with a rose and proposed the way you always deserved. On
+          March 24th, you surprised me with gifts and that beautiful love
+          letter. We took countless pictures. We were so happy. We thought
+          nothing could touch us. But then April came. My families found out.
+          They said no. Everything fell apart. We fought, we cried, there was
+          distance and silence. I had no job, I was stuck at home, and I could
+          barely talk to you. I did part-time work, built websites, and counted
+          the days until things would get better. That was the hardest time of
+          my life. But you? You never left. You never blamed me. You never
+          showed anger even when I gave you every reason to be upset. When I
+          couldn't talk for days, you understood. When I was irritable and
+          distant, you stayed patient. You are the most loyal person I've ever
+          known. While I was busy creating unnecessary drama — talking to
+          colleagues, making you jealous, being careless with your feelings —
+          you just... loved me. Unconditionally. Patiently. Completely.
+          September came and I got the job in Bangalore. A new chapter began.
+          But with it came new challenges — long distance, busy schedules,
+          different time zones, loneliness. And still, you stayed. We talk every
+          day, we resolve our silly fights in an hour, we make each other laugh
+          even through screens. You understand me better than anyone else in
+          this world. I know I'm not perfect. I irritate you sometimes. I get
+          too close to my colleagues and forget to think about how that makes
+          you feel. I tease you and push your buttons just to see you react. But
+          you... you handle it all with grace I don't deserve. You never leave.
+          You never threaten to walk away. You just remind me to do better, and
+          you love me through my mistakes. You've taught me what real love
+          means. It's not just the butterflies and the romance. It's staying
+          when it's hard. It's forgiving when it hurts. It's choosing each other
+          every single day, even when life gives you a thousand reasons not to.
+          This website is my gift to you. Because you gave me a love letter on
+          my birthday, and I want to give you something even bigger — a space
+          filled with our entire story, our memories, our journey from neighbors
+          to soulmates. This is us. Every laugh, every tear, every bike ride,
+          every fight, every makeup — it all matters. It all brought us here.
+          You are my home. Whether you're next door or miles away in another
+          city, you are where I belong. I don't know when our families will say
+          yes. I don't know when the distance will end. But I know this: I will
+          wait for you. I will choose you every single day. And one day — one
+          beautiful, perfect day — I will marry you. Until then, know this: you
+          are loved. You are cherished. You are my everything. Thank you for
+          staying. Thank you for loving me. Thank you for being you.
+        </p>
+        <p class="letter-sig">Forever yours, with all my heart 💕</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <span class="footer-heart">💕</span>
+      <p class="footer-msg">Made with love, just for you.</p>
+      <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.5">
+        Every word on this page is true. ♥
+      </p>
+    </footer>
+
+    <script>
+      // Custom cursor
+      const cursor = document.getElementById("cursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+      });
+      document
+        .querySelectorAll("a, button, .gallery-item, .q-btn")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => cursor.classList.add("grow"));
+          el.addEventListener("mouseleave", () =>
+            cursor.classList.remove("grow"),
+          );
+        });
+
+      // Floating petals
+      const petals = document.getElementById("petals");
+      const petalEmojis = ["🌸", "🌹", "💕", "✨", "🌷", "💗"];
+      for (let i = 0; i < 18; i++) {
+        const p = document.createElement("div");
+        p.className = "petal";
+        p.textContent =
+          petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.animationDuration = 8 + Math.random() * 10 + "s";
+        p.style.animationDelay = Math.random() * 12 + "s";
+        p.style.fontSize = 0.8 + Math.random() * 1.2 + "rem";
+        petals.appendChild(p);
+      }
+
+      // Scroll reveal
+      const revealItems = document.querySelectorAll(".tl-item, .q-card");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+      revealItems.forEach((el) => observer.observe(el));
+
+      // Answer functions
+      function answer(btn, msg) {
+        const parent = btn.closest(".q-card");
+        const response = parent.querySelector(".q-response");
+        response.textContent = msg;
+        response.classList.add("show");
+        parent
+          .querySelectorAll(".q-btn")
+          .forEach((b) => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        launchHearts(btn);
+      }
+      function answer2(btn, id, msg) {
+        const r = document.getElementById(id);
+        r.textContent = msg;
+        r.classList.add("show");
+        btn.parentNode
+          .querySelectorAll(".q-btn")
+          .forEach((b) => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        launchHearts(btn);
+      }
+
+      function launchHearts(btn) {
+        for (let i = 0; i < 8; i++) {
+          const h = document.createElement("div");
+          h.textContent = ["💕", "💗", "🌹", "✨"][
+            Math.floor(Math.random() * 4)
+          ];
+          h.style.cssText = `position:fixed;pointer-events:none;z-index:999;font-size:1.5rem;
+        left:${btn.getBoundingClientRect().left + 30}px;
+        top:${btn.getBoundingClientRect().top}px;
+        transition:all 1.5s ease;opacity:1;`;
+          document.body.appendChild(h);
+          setTimeout(() => {
+            h.style.transform = `translate(${(Math.random() - 0.5) * 200}px, -${80 + Math.random() * 100}px)`;
+            h.style.opacity = "0";
+          }, 50);
+          setTimeout(() => h.remove(), 1600);
+        }
+      }
+
+      // Stagger q-card animations
+      document.querySelectorAll(".q-card").forEach((c, i) => {
+        c.style.transitionDelay = i * 0.15 + "s";
+      });
+    </script>
+  </body>
+</html>
